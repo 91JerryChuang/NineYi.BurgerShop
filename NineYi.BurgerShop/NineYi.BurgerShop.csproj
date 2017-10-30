@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Breads\Bread.cs" />
-    <Compile Include="Breads\WheatBread.cs" />
-    <Compile Include="Breads\WhiteBread.cs" />
+    <Compile Include="Models\Breads\Bread.cs" />
+    <Compile Include="Models\Breads\WheatBread.cs" />
+    <Compile Include="Models\Breads\WhiteBread.cs" />
     <Compile Include="Burgers\Burger.cs" />
     <Compile Include="Burgers\NewYorkChickenBurger.cs" />
     <Compile Include="Burgers\NewYorkPorkBurger.cs" />

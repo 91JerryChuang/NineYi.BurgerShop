@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NineYi.BurgerShop.Burgers;
-using NineYi.BurgerShop.Breads;
+using NineYi.BurgerShop.Models.Breads;
 using NineYi.BurgerShop.Veggies;
 using NineYi.BurgerShop.Meats;
 
 namespace NineYi.BurgerShop
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //// 1. 使用者點餐
 
@@ -53,7 +53,7 @@ namespace NineYi.BurgerShop
                 burger.Veggie = new Onion();
                 burger.Meat = new Turkey();
             }
-            else if(shopChoice == 2 && burgerChoice == 2)
+            else if (shopChoice == 2 && burgerChoice == 2)
             {
                 burger = new NewYorkPorkBurger();
 
