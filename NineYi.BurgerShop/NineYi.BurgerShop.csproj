@@ -51,11 +51,11 @@
     <Compile Include="Burgers\NewYorkPorkBurger.cs" />
     <Compile Include="Burgers\TaipeiChickenBurger.cs" />
     <Compile Include="Burgers\TaipeiPorkBurger.cs" />
-    <Compile Include="Meats\Bacon.cs" />
-    <Compile Include="Meats\Meat.cs" />
-    <Compile Include="Meats\TaiwanChicken.cs" />
-    <Compile Include="Meats\Tenderloin.cs" />
-    <Compile Include="Meats\Turkey.cs" />
+    <Compile Include="Models\Meats\Bacon.cs" />
+    <Compile Include="Models\Meats\Meat.cs" />
+    <Compile Include="Models\Meats\TaiwanChicken.cs" />
+    <Compile Include="Models\Meats\Tenderloin.cs" />
+    <Compile Include="Models\Meats\Turkey.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Veggies\Onion.cs" />

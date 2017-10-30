@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NineYi.BurgerShop.Burgers;
 using NineYi.BurgerShop.Models.Breads;
 using NineYi.BurgerShop.Models.Veggies;
-using NineYi.BurgerShop.Meats;
+using NineYi.BurgerShop.Models.Meats;
 
 namespace NineYi.BurgerShop
 {

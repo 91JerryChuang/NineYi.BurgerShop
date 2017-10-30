@@ -1,5 +1,5 @@
 ﻿using NineYi.BurgerShop.Models.Breads;
-using NineYi.BurgerShop.Meats;
+using NineYi.BurgerShop.Models.Meats;
 using NineYi.BurgerShop.Models.Veggies;
 using System;
 using System.Collections.Generic;
