@@ -46,11 +46,11 @@
     <Compile Include="Models\Breads\Bread.cs" />
     <Compile Include="Models\Breads\WheatBread.cs" />
     <Compile Include="Models\Breads\WhiteBread.cs" />
-    <Compile Include="Burgers\Burger.cs" />
-    <Compile Include="Burgers\NewYorkChickenBurger.cs" />
-    <Compile Include="Burgers\NewYorkPorkBurger.cs" />
-    <Compile Include="Burgers\TaipeiChickenBurger.cs" />
-    <Compile Include="Burgers\TaipeiPorkBurger.cs" />
+    <Compile Include="Models\Burgers\Burger.cs" />
+    <Compile Include="Models\Burgers\NewYorkChickenBurger.cs" />
+    <Compile Include="Models\Burgers\NewYorkPorkBurger.cs" />
+    <Compile Include="Models\Burgers\TaipeiChickenBurger.cs" />
+    <Compile Include="Models\Burgers\TaipeiPorkBurger.cs" />
     <Compile Include="Models\Meats\Bacon.cs" />
     <Compile Include="Models\Meats\Meat.cs" />
     <Compile Include="Models\Meats\TaiwanChicken.cs" />

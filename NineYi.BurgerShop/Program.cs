@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NineYi.BurgerShop.Burgers;
+using NineYi.BurgerShop.Models.Burgers;
 using NineYi.BurgerShop.Models.Breads;
 using NineYi.BurgerShop.Models.Veggies;
 using NineYi.BurgerShop.Models.Meats;
