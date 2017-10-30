@@ -3,7 +3,7 @@
     /// <summary>
     /// 麵包類。
     /// </summary>
-    public class Bread
+    public abstract class Bread
     {
         /// <summary>
         /// 取得或設定名稱。
