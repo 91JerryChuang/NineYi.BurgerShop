@@ -3,7 +3,7 @@
     /// <summary>
     /// 蔬菜類。
     /// </summary>
-    public class Veggie
+    public abstract class Veggie
     {
         /// <summary>
         /// 取得或設定名稱。
