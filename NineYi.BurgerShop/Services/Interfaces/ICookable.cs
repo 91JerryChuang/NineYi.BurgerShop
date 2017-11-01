@@ -6,11 +6,11 @@
     public interface ICookable
     {
         /// <summary>
-        /// 烹飪指定的食物。
+        /// 烹飪指定的菜餚。
         /// </summary>
-        /// <typeparam name="TFood">食物的型別。</typeparam>
-        /// <param name="food">食物。</param>
-        /// <returns>烹飪後的食物。</returns>
-        string Cook<TFood>(TFood food);
+        /// <typeparam name="TDish">菜餚的型別。</typeparam>
+        /// <param name="food">菜餚。</param>
+        /// <returns>烹飪後的菜餚。</returns>
+        string Cook<TDish>(TDish dish);
     }
 }
