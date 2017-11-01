@@ -6,6 +6,14 @@
     public interface IDish
     {
         /// <summary>
+        /// 取得名稱。
+        /// </summary>
+        /// <value>
+        /// 名稱。
+        /// </value>
+        string Name { get; }
+
+        /// <summary>
         /// 取得烹飪的方法。
         /// </summary>
         /// <returns>
