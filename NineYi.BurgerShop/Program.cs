@@ -65,7 +65,7 @@ namespace NineYi.BurgerShop
 
             //// 3. 烹飪漢堡
 
-            burger.Cook();
+            Console.WriteLine(burger.GetCookingMethod());
         }
     }
 }
