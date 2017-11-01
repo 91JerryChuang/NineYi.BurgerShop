@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commons\Enums\BranchStoreEnum.cs" />
     <Compile Include="Models\Breads\Bread.cs" />
     <Compile Include="Models\Breads\WheatBread.cs" />
     <Compile Include="Models\Breads\WhiteBread.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Models\Veggies\Onion.cs" />
     <Compile Include="Models\Veggies\Tomato.cs" />
     <Compile Include="Models\Veggies\Veggie.cs" />
+    <Compile Include="Services\Chef.cs" />
     <Compile Include="Services\Interfaces\ICookable.cs" />
   </ItemGroup>
   <ItemGroup>
