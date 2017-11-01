@@ -1,5 +1,5 @@
-﻿using System;
-using NineYi.BurgerShop.Models.Breads;
+﻿using NineYi.BurgerShop.Models.Breads;
+using NineYi.BurgerShop.Models.Interfaces;
 using NineYi.BurgerShop.Models.Meats;
 using NineYi.BurgerShop.Models.Veggies;
 
@@ -8,7 +8,8 @@ namespace NineYi.BurgerShop.Models.Burgers
     /// <summary>
     /// 漢堡。
     /// </summary>
-    public abstract class Burger
+    /// <seealso cref="NineYi.BurgerShop.Models.Interfaces.IDish" />
+    public abstract class Burger : IDish
     {
         /// <summary>
         /// 取得或設定名稱。
@@ -16,7 +17,7 @@ namespace NineYi.BurgerShop.Models.Burgers
         /// <value>
         /// 名稱。
         /// </value>
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
         /// <summary>
         /// 取得或設定麵包。
@@ -43,13 +44,17 @@ namespace NineYi.BurgerShop.Models.Burgers
         public Meat Meat { get; set; }
 
         /// <summary>
-        /// 烹飪漢堡。
+        /// 取得烹飪的方法。
         /// </summary>
-        public void Cook()
+        /// <returns>
+        /// 烹飪方法的字串。
+        /// </returns>
+        public string GetCookingMethod()
         {
-            Console.WriteLine("Cooking {0}! Bread used:{1}, Veggie used:{2}, Meat used:{3}...", this.Name, this.Bread, this.Veggie, this.Meat);
+            var cookingMethod =
+                $"Cooking {this.Name}! Bread used:{this.Bread}, Veggie used:{this.Veggie}, Meat used:{this.Meat}...";
 
-            Console.WriteLine("Your {0} is ready. Enjoy it!", this.Name);
+            return cookingMethod;
         }
     }
 }
