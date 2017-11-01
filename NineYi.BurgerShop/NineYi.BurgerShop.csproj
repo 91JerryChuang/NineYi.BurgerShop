@@ -51,6 +51,7 @@
     <Compile Include="Models\Burgers\NewYorkPorkBurger.cs" />
     <Compile Include="Models\Burgers\TaipeiChickenBurger.cs" />
     <Compile Include="Models\Burgers\TaipeiPorkBurger.cs" />
+    <Compile Include="Models\Interfaces\IDish.cs" />
     <Compile Include="Models\Meats\Bacon.cs" />
     <Compile Include="Models\Meats\Meat.cs" />
     <Compile Include="Models\Meats\TaiwanChicken.cs" />
