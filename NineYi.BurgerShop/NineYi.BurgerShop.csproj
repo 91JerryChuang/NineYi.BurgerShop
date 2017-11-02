@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Commons\Enums\BranchStoreEnum.cs" />
     <Compile Include="Commons\Enums\BurgerEnum.cs" />
+    <Compile Include="Commons\Helpers\EnumHelper.cs" />
     <Compile Include="Models\Breads\Bread.cs" />
     <Compile Include="Models\Breads\WheatBread.cs" />
     <Compile Include="Models\Breads\WhiteBread.cs" />
