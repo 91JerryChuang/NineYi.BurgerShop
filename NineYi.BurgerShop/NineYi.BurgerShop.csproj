@@ -55,12 +55,14 @@
     <Compile Include="Models\Burgers\NewYorkPorkBurger.cs" />
     <Compile Include="Models\Burgers\TaipeiChickenBurger.cs" />
     <Compile Include="Models\Burgers\TaipeiPorkBurger.cs" />
+    <Compile Include="Models\Burgers\TokyoChickenBurger.cs" />
     <Compile Include="Models\Interfaces\IDish.cs" />
     <Compile Include="Models\Meats\Bacon.cs" />
     <Compile Include="Models\Meats\Meat.cs" />
     <Compile Include="Models\Meats\TaiwanChicken.cs" />
     <Compile Include="Models\Meats\Tenderloin.cs" />
     <Compile Include="Models\Meats\Turkey.cs" />
+    <Compile Include="Models\Sauces\Sauce.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Veggies\Onion.cs" />
