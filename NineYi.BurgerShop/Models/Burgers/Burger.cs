@@ -94,10 +94,10 @@ namespace NineYi.BurgerShop.Models.Burgers
         /// <returns>
         /// 烹飪方法的字串。
         /// </returns>
-        public string GetCookingMethod()
+        public virtual string GetCookingMethod()
         {
             var cookingMethod =
-                $"Cooking {this.Name}! Bread used:{this.Bread}, Veggie used:{this.Veggie}, Meat used:{this.Meat}...";
+                $"Cooking {this.Name}! Bread used: {this.Bread.Name}, Veggie used: {this.Veggie.Name}, Meat used: {this.Meat.Name}...";
 
             return cookingMethod;
         }
