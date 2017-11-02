@@ -1,62 +1,63 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using NineYi.BurgerShop.Commons.Enums;
-using NineYi.BurgerShop.Models.Interfaces;
+using NineYi.BurgerShop.Models.Burgers;
 using NineYi.BurgerShop.Services.Interfaces;
 
 namespace NineYi.BurgerShop.Services
 {
     /// <summary>
-    /// 廚師抽象類別。
+    /// 廚師類別。
     /// </summary>
     /// <seealso cref="NineYi.BurgerShop.Services.Interfaces.ICookable" />
-    public abstract class Chef : ICookable
+    public class Chef : ICookable
     {
         /// <summary>
-        /// 所屬分店。
+        /// 漢堡食譜。
         /// </summary>
-        private readonly BranchStoreEnum _branchStore;
+        private readonly IReadOnlyDictionary<BurgerEnum, Burger> _burgerRecipes;
 
         /// <summary>
-        /// 取得所屬分店。
+        /// 初始化 <see cref="Chef" /> 類別新的執行個體。
         /// </summary>
-        /// <value>
-        /// 所屬分店。
-        /// </value>
-        public BranchStoreEnum BranchStore { get { return this._branchStore; } }
-
-        /// <summary>
-        /// 初始化 <see cref="Chef"/> 類別新的執行個體。
-        /// </summary>
-        /// <param name="branchStore">所屬分店。</param>
-        /// <exception cref="ArgumentException">branchStore</exception>
-        public Chef(BranchStoreEnum branchStore)
+        /// <param name="burgerRecipes">漢堡食譜。</param>
+        /// <exception cref="ArgumentException">burgerRecipes</exception>
+        public Chef(IReadOnlyDictionary<BurgerEnum, Burger> burgerRecipes)
         {
-            if (Enum.IsDefined(typeof(BranchStoreEnum), branchStore) == false)
+            if (burgerRecipes == null || burgerRecipes.Any() == false)
             {
-                throw new ArgumentException(nameof(branchStore));
+                throw new ArgumentException(nameof(burgerRecipes));
             }
 
-            this._branchStore = branchStore;
+            this._burgerRecipes = burgerRecipes;
         }
 
         /// <summary>
         /// 烹飪指定的菜餚。
         /// </summary>
-        /// <param name="dish"></param>
+        /// <param name="burgerType">漢堡的種類。</param>
         /// <returns>
         /// 烹飪後的菜餚。
         /// </returns>
-        public virtual string Cook(IDish dish)
+        public string Cook(BurgerEnum burgerType)
         {
-            var cookingMethod = dish.GetCookingMethod();
+            Burger burger;
 
-            var cookedDish = new StringBuilder()
+            if (this._burgerRecipes.TryGetValue(burgerType, out burger) == false)
+            {
+                return "菜單上沒有這個漢堡。";
+            }
+
+            var cookingMethod = burger.GetCookingMethod();
+
+            var cookedBurger = new StringBuilder()
                 .AppendLine(cookingMethod)
-                .AppendLine($"Your {dish.Name} is ready. Enjoy it!")
+                .AppendLine($"Your {burger.Name} is ready. Enjoy it!")
                 .ToString();
 
-            return cookedDish;
+            return cookedBurger;
         }
     }
 }
