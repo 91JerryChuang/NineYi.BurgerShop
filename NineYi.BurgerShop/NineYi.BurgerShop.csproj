@@ -61,6 +61,7 @@
     <Compile Include="Models\Interfaces\IDish.cs" />
     <Compile Include="Models\Meats\Bacon.cs" />
     <Compile Include="Models\Meats\JapaneseChicken.cs" />
+    <Compile Include="Models\Meats\JapanesePork.cs" />
     <Compile Include="Models\Meats\Meat.cs" />
     <Compile Include="Models\Meats\TaiwanChicken.cs" />
     <Compile Include="Models\Meats\Tenderloin.cs" />
