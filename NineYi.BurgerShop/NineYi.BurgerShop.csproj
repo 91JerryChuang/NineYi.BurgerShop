@@ -43,28 +43,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Breads\Bread.cs" />
-    <Compile Include="Breads\WheatBread.cs" />
-    <Compile Include="Breads\WhiteBread.cs" />
-    <Compile Include="Burgers\Burger.cs" />
-    <Compile Include="Burgers\NewYorkChickenBurger.cs" />
-    <Compile Include="Burgers\NewYorkPorkBurger.cs" />
-    <Compile Include="Burgers\TaipeiChickenBurger.cs" />
-    <Compile Include="Burgers\TaipeiPorkBurger.cs" />
-    <Compile Include="Meats\Bacon.cs" />
-    <Compile Include="Meats\Meat.cs" />
-    <Compile Include="Meats\TaiwanChicken.cs" />
-    <Compile Include="Meats\Tenderloin.cs" />
-    <Compile Include="Meats\Turkey.cs" />
+    <Compile Include="Commons\Enums\BranchStoreEnum.cs" />
+    <Compile Include="Commons\Enums\BurgerEnum.cs" />
+    <Compile Include="Commons\Enums\YesNoEnum.cs" />
+    <Compile Include="Commons\Helpers\EnumHelper.cs" />
+    <Compile Include="Models\Breads\Bread.cs" />
+    <Compile Include="Models\Breads\GrainBread.cs" />
+    <Compile Include="Models\Breads\WheatBread.cs" />
+    <Compile Include="Models\Breads\WhiteBread.cs" />
+    <Compile Include="Models\Burgers\Burger.cs" />
+    <Compile Include="Models\Burgers\NewYorkChickenBurger.cs" />
+    <Compile Include="Models\Burgers\NewYorkPorkBurger.cs" />
+    <Compile Include="Models\Burgers\TaipeiChickenBurger.cs" />
+    <Compile Include="Models\Burgers\TaipeiPorkBurger.cs" />
+    <Compile Include="Models\Burgers\TokyoChickenBurger.cs" />
+    <Compile Include="Models\Burgers\TokyoPorkBurger.cs" />
+    <Compile Include="Models\Interfaces\IDish.cs" />
+    <Compile Include="Models\Meats\Bacon.cs" />
+    <Compile Include="Models\Meats\JapaneseChicken.cs" />
+    <Compile Include="Models\Meats\JapanesePork.cs" />
+    <Compile Include="Models\Meats\Meat.cs" />
+    <Compile Include="Models\Meats\TaiwanChicken.cs" />
+    <Compile Include="Models\Meats\Tenderloin.cs" />
+    <Compile Include="Models\Meats\Turkey.cs" />
+    <Compile Include="Models\Sauces\HoneyMustard.cs" />
+    <Compile Include="Models\Sauces\Sauce.cs" />
+    <Compile Include="Models\Sauces\ThousandIsland.cs" />
+    <Compile Include="Models\Veggies\Lettuce.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Veggies\Onion.cs" />
-    <Compile Include="Veggies\Tomato.cs" />
-    <Compile Include="Veggies\Veggie.cs" />
+    <Compile Include="Models\Veggies\Onion.cs" />
+    <Compile Include="Models\Veggies\Tomato.cs" />
+    <Compile Include="Models\Veggies\Veggie.cs" />
+    <Compile Include="Services\Chef.cs" />
+    <Compile Include="Services\Factories\ChefFactory.cs" />
+    <Compile Include="Services\Interfaces\ICookable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
