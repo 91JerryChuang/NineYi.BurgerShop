@@ -6,6 +6,7 @@ using NineYi.BurgerShop.Commons.Enums;
 using NineYi.BurgerShop.Models.Breads;
 using NineYi.BurgerShop.Models.Burgers;
 using NineYi.BurgerShop.Models.Meats;
+using NineYi.BurgerShop.Models.Sauces;
 using NineYi.BurgerShop.Models.Veggies;
 
 namespace NineYi.BurgerShop.Services.Factories
@@ -19,7 +20,7 @@ namespace NineYi.BurgerShop.Services.Factories
         /// 漢堡食譜。
         /// </summary>
         private static readonly IReadOnlyDictionary<Func<BranchStoreEnum, BurgerEnum, bool>, Burger> _burgerRecipes =
-            new Dictionary<Func<BranchStoreEnum, BurgerEnum, bool>, Burger>
+            new Dictionary<Func<BranchStoreEnum, BurgerEnum, bool>, Burger>(6)
             {
                 {
                     (branch, burger) => branch == BranchStoreEnum.Taipei && burger == BurgerEnum.Chicken,
@@ -37,6 +38,14 @@ namespace NineYi.BurgerShop.Services.Factories
                     (branch, burger) => branch == BranchStoreEnum.NewYork && burger == BurgerEnum.Pork,
                     new NewYorkPorkBurger(new WheatBread(), new Onion(), new Bacon())
                 },
+                {
+                    (branch, burger) => branch == BranchStoreEnum.Tokyo && burger == BurgerEnum.Chicken,
+                    new TokyoChickenBurger(new GrainBread(), new Lettuce(), new JapaneseChicken(), new HoneyMustard())
+                },
+                {
+                    (branch, burger) => branch == BranchStoreEnum.Tokyo && burger == BurgerEnum.Pork,
+                    new TokyoPorkBurger(new GrainBread(), new Lettuce(), new JapanesePork(), new ThousandIsland())
+                }
             };
 
         /// <summary>
