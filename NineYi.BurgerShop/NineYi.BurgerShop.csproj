@@ -68,6 +68,7 @@
     <Compile Include="Models\Meats\Turkey.cs" />
     <Compile Include="Models\Sauces\HoneyMustard.cs" />
     <Compile Include="Models\Sauces\Sauce.cs" />
+    <Compile Include="Models\Sauces\ThousandIsland.cs" />
     <Compile Include="Models\Veggies\Lettuce.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
