@@ -7,8 +7,9 @@ using NineYi.BurgerShop.Models.Veggies;
 namespace NineYi.BurgerShop.Models.Burgers
 {
     /// <summary>
-    /// 東京蜂蜜芥末雞堡。
+    /// 東京蜂蜜芥末雞肉堡。
     /// </summary>
+    /// <seealso cref="NineYi.BurgerShop.Models.Burgers.Burger" />
     public class TokyoChickenBurger : Burger
     {
         /// <summary>
