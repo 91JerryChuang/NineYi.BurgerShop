@@ -66,6 +66,7 @@
     <Compile Include="Models\Meats\TaiwanChicken.cs" />
     <Compile Include="Models\Meats\Tenderloin.cs" />
     <Compile Include="Models\Meats\Turkey.cs" />
+    <Compile Include="Models\Sauces\HoneyMustard.cs" />
     <Compile Include="Models\Sauces\Sauce.cs" />
     <Compile Include="Models\Veggies\Lettuce.cs" />
     <Compile Include="Program.cs" />
