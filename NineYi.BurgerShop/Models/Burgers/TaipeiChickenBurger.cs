@@ -11,8 +11,11 @@ namespace NineYi.BurgerShop.Models.Burgers
     public class TaipeiChickenBurger : Burger
     {
         /// <summary>
-        /// 初始化 <see cref="TaipeiChickenBurger"/> 類別新的執行個體。
+        /// 初始化 <see cref="TaipeiChickenBurger" /> 類別新的執行個體。
         /// </summary>
+        /// <param name="bread">麵包。</param>
+        /// <param name="veggie">蔬菜。</param>
+        /// <param name="meat">肉類。</param>
         public TaipeiChickenBurger(Bread bread, Veggie veggie, Meat meat)
             : base("Taipei Chicken Burger", bread, veggie, meat)
         {
