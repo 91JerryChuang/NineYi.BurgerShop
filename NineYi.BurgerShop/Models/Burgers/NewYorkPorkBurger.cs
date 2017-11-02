@@ -1,4 +1,8 @@
-﻿namespace NineYi.BurgerShop.Models.Burgers
+﻿using NineYi.BurgerShop.Models.Breads;
+using NineYi.BurgerShop.Models.Meats;
+using NineYi.BurgerShop.Models.Veggies;
+
+namespace NineYi.BurgerShop.Models.Burgers
 {
     /// <summary>
     /// 紐約豬肉堡。
@@ -9,9 +13,9 @@
         /// <summary>
         /// 初始化 <see cref="NewYorkPorkBurger"/> 類別新的執行個體。
         /// </summary>
-        public NewYorkPorkBurger()
+        public NewYorkPorkBurger(Bread bread, Veggie veggie, Meat meat)
+            : base("NewYork Pork Burger", bread, veggie, meat)
         {
-            this.Name = "NewYork Pork Burger";
         }
     }
 }
