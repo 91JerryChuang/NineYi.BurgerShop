@@ -48,6 +48,7 @@
     <Compile Include="Commons\Enums\YesNoEnum.cs" />
     <Compile Include="Commons\Helpers\EnumHelper.cs" />
     <Compile Include="Models\Breads\Bread.cs" />
+    <Compile Include="Models\Breads\GrainBread.cs" />
     <Compile Include="Models\Breads\WheatBread.cs" />
     <Compile Include="Models\Breads\WhiteBread.cs" />
     <Compile Include="Models\Burgers\Burger.cs" />
