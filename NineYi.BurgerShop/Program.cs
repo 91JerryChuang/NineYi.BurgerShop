@@ -2,70 +2,154 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using NineYi.BurgerShop.Burgers;
-using NineYi.BurgerShop.Breads;
-using NineYi.BurgerShop.Veggies;
-using NineYi.BurgerShop.Meats;
+using NineYi.BurgerShop.Commons.Enums;
+using NineYi.BurgerShop.Commons.Helpers;
+using NineYi.BurgerShop.Services.Factories;
 
 namespace NineYi.BurgerShop
 {
-    class Program
+    /// <summary>
+    /// 主控台程式。
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// 主程式。
+        /// </summary>
+        /// <param name="args">參數集合。</param>
+        private static void Main(string[] args)
         {
-            //// 1. 使用者點餐
+            var againChoice = YesNoEnum.No;
 
-            Console.Write("Which shop do you like? (1)Taipei (2)NewYork: ");
-            int shopChoice = int.Parse(Console.ReadLine());
-
-            Console.Write("What burger would you like? (1)Chicken (2)Pork: ");
-            int burgerChoice = int.Parse(Console.ReadLine());
-
-            //// 2. 準備漢堡
-
-            Burger burger = null;
-
-            if (shopChoice == 1 && burgerChoice == 1)
+            do
             {
-                burger = new TaipeiChickenBurger();
+                // 1. 使用者點餐。
+                var choiceBranchStoreQuestion = GenerateMultipleChoiceQuestion<BranchStoreEnum>("你喜歡哪個分店？");
+                var shopChoice = GetUserInput(
+                    choiceBranchStoreQuestion,
+                    (input) => (BranchStoreEnum)Enum.Parse(typeof(BranchStoreEnum), input),
+                    (result) => Enum.IsDefined(typeof(BranchStoreEnum), result));
 
-                //// 備料
-                burger.Bread = new WhiteBread();
-                burger.Veggie = new Tomato();
-                burger.Meat = new TaiwanChicken();
-            }
-            else if (shopChoice == 1 && burgerChoice == 2)
+                var choiceBurgerQuestion = GenerateMultipleChoiceQuestion<BurgerEnum>("你想要什麼漢堡？");
+                var burgerChoice = GetUserInput(
+                    choiceBurgerQuestion,
+                    (input) => (BurgerEnum)Enum.Parse(typeof(BurgerEnum), input),
+                    (result) => Enum.IsDefined(typeof(BurgerEnum), result));
+
+                // 2. 聘請廚師。
+                var chef = ChefFactory.Create(shopChoice);
+
+                // 3. 烹飪漢堡。
+                Console.WriteLine(chef.Cook(burgerChoice));
+
+                // 4. 再點一份漢堡。
+                var againQuestion = GenerateMultipleChoiceQuestion<YesNoEnum>("要再點一份漢堡？");
+                againChoice = GetUserInput(
+                    againQuestion,
+                    (input) => (YesNoEnum)Enum.Parse(typeof(YesNoEnum), input),
+                    (result) => Enum.IsDefined(typeof(YesNoEnum), result));
+            } while (againChoice == YesNoEnum.Yes);
+
+            Console.WriteLine("銘謝惠顧。");
+        }
+
+        /// <summary>
+        /// 產生選擇題的問題文字。
+        /// </summary>
+        /// <typeparam name="TEnum">列舉型別。</typeparam>
+        /// <param name="question">問題。</param>
+        /// <returns>選擇題的問題文字。</returns>
+        /// <exception cref="ArgumentException"></exception>
+        private static string GenerateMultipleChoiceQuestion<TEnum>(string question)
+            where TEnum : struct, IComparable, IFormattable, IConvertible
+        {
+            var enumType = typeof(TEnum);
+            var paramsChecklist = new Dictionary<string, Func<bool>>
             {
-                burger = new TaipeiPorkBurger();
+                { nameof(TEnum), () => enumType.IsEnum == false },
+                { nameof(question), () => string.IsNullOrWhiteSpace(question) }
+            };
 
-                //// 備料
-                burger.Bread = new WhiteBread();
-                burger.Veggie = new Tomato();
-                burger.Meat = new Tenderloin();
-            }
-            else if (shopChoice == 2 && burgerChoice == 1)
+            var paramName = paramsChecklist.FirstOrDefault(x => x.Value() == true).Key;
+            if (string.IsNullOrWhiteSpace(paramName) == false)
             {
-                burger = new NewYorkChickenBurger();
-
-                //// 備料
-                burger.Bread = new WheatBread();
-                burger.Veggie = new Onion();
-                burger.Meat = new Turkey();
+                throw new ArgumentException(paramName);
             }
-            else if(shopChoice == 2 && burgerChoice == 2)
+
+            var choiceOptions = GetChoiceOptions<TEnum>();
+
+            var multipleChoiceQuestion = new StringBuilder()
+                .AppendLine(question)
+                .AppendLine(choiceOptions)
+                .ToString();
+
+            return multipleChoiceQuestion;
+        }
+
+        /// <summary>
+        /// 取得選項文字。
+        /// </summary>
+        /// <typeparam name="TEnum">列舉型別。</typeparam>
+        /// <returns>選項文字。</returns>
+        /// <exception cref="ArgumentException">TEnum</exception>
+        private static string GetChoiceOptions<TEnum>()
+            where TEnum : struct, IComparable, IFormattable, IConvertible
+        {
+            var enumType = typeof(TEnum);
+            if (enumType.IsEnum == false)
             {
-                burger = new NewYorkPorkBurger();
-
-                //// 備料
-                burger.Bread = new WheatBread();
-                burger.Veggie = new Onion();
-                burger.Meat = new Bacon();
+                throw new ArgumentException(nameof(TEnum));
             }
 
-            //// 3. 烹飪漢堡
+            var descriptions = EnumHelper.GetDescriptions<TEnum>();
 
-            burger.Cook();
+            var choiceOptions = string.Join("、", descriptions.Select(x =>
+                $"({Convert.ChangeType(x.Key, enumType.GetEnumUnderlyingType()).ToString()}){x.Value}"));
+
+            return choiceOptions.ToString();
+        }
+
+        /// <summary>
+        /// 取得使用者輸入值。
+        /// </summary>
+        /// <typeparam name="TResult">回傳值的型別。</typeparam>
+        /// <param name="question">問題。</param>
+        /// <param name="converter">輸入值的轉換器。</param>
+        /// <param name="validator">輸入值的驗證器。</param>
+        /// <returns>使用者輸入值。</returns>
+        /// <exception cref="ArgumentException">question</exception>
+        private static TResult GetUserInput<TResult>(
+            string question, Func<string, TResult> converter, Func<TResult, bool> validator)
+        {
+            if (string.IsNullOrWhiteSpace(question))
+            {
+                throw new ArgumentException(nameof(question));
+            }
+
+            TResult result = default(TResult);
+            var isInputError = true;
+
+            do
+            {
+                try
+                {
+                    Console.Write(question);
+                    var input = Console.ReadLine();
+                    result = converter(input);
+                    isInputError = validator(result) == false;
+
+                    if (isInputError)
+                    {
+                        Console.WriteLine($"輸入錯誤請重新輸入。{Environment.NewLine}");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"輸入錯誤請重新輸入。{Environment.NewLine}");
+                }
+            } while (isInputError);
+
+            return result;
         }
     }
 }
